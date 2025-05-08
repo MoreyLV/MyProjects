@@ -12,14 +12,23 @@
 -Project Structure-
 
 NeuroGlyph/
+
 ├── app.py # FastAPI backend with WebSocket support
+
 ├── main.py # Command-line interface for training/testing
+
 ├── weights.txt # Stored weights of the neural network
+
 ├── bias.txt # Stored biases of the neural network
+
 ├── templates/
+
 │ └── index.html # Web interface template
+
 ├── static/
+
 │ └── fonts/ # Font assets
+
 └── README.md
 
 -How to Run-
