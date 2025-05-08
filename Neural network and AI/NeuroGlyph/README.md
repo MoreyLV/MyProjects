@@ -36,11 +36,13 @@ NeuroGlyph/
 ---Bash---
 
 python main.py
+
 You'll be prompted to select training or recognition mode.
 
 ---Web Interface---
 
 uvicorn app:app --reload
+
 Then visit: http://127.0.0.1:8000
 
 -License-
