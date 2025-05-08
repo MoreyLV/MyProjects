@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>NN programm</title>
+    <script>
+
+        $(document).ready(function(){
+            $("#1").on('click', function(){
+                $("#1").css({
+                   "background" : "black"
+                });
+                $("#b1").html('1');
+            });
+            $("#2").on('click', function(){
+                $("#2").css({
+                   "background" : "black"
+                });
+                $("#b2").html('1');
+            });
+            $("#3").on('click', function(){
+                $("#3").css({
+                   "background" : "black"
+                });
+                $("#b3").html('1');
+            });
+            $("#4").on('click', function(){
+                $("#4").css({
+                   "background" : "black"
+                });
+                $("#b4").html('1');
+            });
+            $("#5").on('click', function(){
+                $("#5").css({
+                   "background" : "black"
+                });
+                $("#b5").html('1');
+            });
+            $("#6").on('click', function(){
+                $("#6").css({
+                   "background" : "black"
+                });
+                $("#b6").html('1');
+            });
+            $("#7").on('click', function(){
+                $("#7").css({
+                   "background" : "black"
+                });
+                $("#b7").html('1');
+            });
+            $("#8").on('click', function(){
+                $("#8").css({
+                   "background" : "black"
+                });
+                $("#b8").html('1');
+            });
+            $("#9").on('click', function(){
+                $("#9").css({
+                   "background" : "black"
+                });
+                $("#b9").html('1');
+            });
+            $("#10").on('click', function(){
+                $("#10").css({
+                   "background" : "black"
+                });
+                $("#b10").html('1');
+            });
+            $("#11").on('click', function(){
+                $("#11").css({
+                   "background" : "black"
+                });
+                $("#b11").html('1');
+            });
+            $("#12").on('click', function(){
+                $("#12").css({
+                   "background" : "black"
+                });
+                $("#b12").html('1');
+            });
+            $("#13").on('click', function(){
+                $("#13").css({
+                   "background" : "black"
+                });
+                $("#b13").html('1');
+            });
+            $("#14").on('click', function(){
+                $("#14").css({
+                   "background" : "black"
+                });
+                $("#b14").html('1');
+            });
+            $("#15").on('click', function(){
+                $("#15").css({
+                   "background" : "black"
+                });
+                $("#b15").html('1');
+            });
+            $(".reset").on('click', function(){
+                $(".matrix").css({
+                   "background" : "white"
+                });
+                $("#feedback").html("N/A");
+                $("#b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #b10, #b11, #b12, #b13, #b14, #b15").html('0');
+            });
+            $(".count").on('click', function(){
+                const ws = new WebSocket("ws://localhost:8000/ws");
+
+                let num1 = $("#1").text();
+                let num2 = $("#2").text();
+                let num3 = $("#3").text();
+                let num4 = $("#4").text();
+                let num5 = $("#5").text();
+                let num6 = $("#6").text();
+                let num7 = $("#7").text();
+                let num8 = $("#8").text();
+                let num9 = $("#9").text();
+                let num10 = $("#10").text();
+                let num11 = $("#11").text();
+                let num12 = $("#12").text();
+                let num13 = $("#13").text();
+                let num14 = $("#14").text();
+                let num15 = $("#15").text();
+
+                ws.onopen = () => {
+                let data = [[num1, num2, num3], [num4, num5, num6], [num7, num8, num9], [num10, num11, num12], [num13, num14, num15]];
+                ws.send(JSON.stringify({ type: "array", data: data }));
+                };
+                ws.onmessage = (event) => {
+                   console.log(event.data);
+                   $("#feedback").html(event.data)
+                };
+            });
+        });
+
+    </script>
+    <style>
+        @font-face {
+          font-family: 'FONT';
+          src: url("/static/fonts/GmarketSansMedium.otf") format("opentype");
+        }
+
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: FONT;
+        }
+        .beta {
+            border: 2px solid red;
+        }
+        .massive-placer {
+            display: flex;
+            width: 100%;
+            height: 60em;
+            justify-content: center;
+            align-items: center;
+            padding: 2% 0%;
+            box-sizing: border-box;
+            background: lightgray;
+            padding-right: 15%;
+        }
+        .reset {
+            position: absolute;
+            color: black;
+            background: white;
+            border-radius: 15px;
+            border: none;
+            padding: 1% 2%;
+            font-size: 1.5em;
+            transition: 0.3s ease-in-out;
+            right: 15%;
+            top: 15%;
+        }
+        .reset:hover {
+            color: white;
+            background: black;
+        }
+        .count {
+            position: absolute;
+            color: black;
+            background: white;
+            border-radius: 15px;
+            border: none;
+            padding: 1% 2%;
+            font-size: 1.37em;
+            transition: 0.3s ease-in-out;
+            right: 15%;
+            top: 25%;
+        }
+        .count:hover {
+            color: white;
+            background: black;
+        }
+        .massive {
+            background: white;
+            width: 30%;
+            min-width: 35em;
+            height: 90%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            color: transparent;
+            user-select: none;
+            border-radius: 35px;
+            overflow: hidden;
+        }
+        .matrix {
+            border: 1px solid black;
+            transition: 0.3s ease-in-out
+        }
+        .matrix:hover {
+            background: black;
+        }
+        .feedback {
+            background: white;
+            width: 30%;
+            min-width: 35em;
+            height: 90%;
+            user-select: none;
+            border-radius: 35px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 5%;
+        }
+        .feedback h1{
+            font-size: 5em;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="massive-placer">
+        <a class="reset">Reset</a>
+        <a class="count">Count</a>
+        <div class="feedback"><h1 id="feedback">N/A</h1></div>
+        <div class="massive">
+            <div id="1" class="matrix">
+                <h1 id="b1">0</h1>
+            </div>
+            <div id="2" class="matrix">
+                <h1 id="b2">0</h1>
+            </div>
+            <div id="3" class="matrix">
+                <h1 id="b3">0</h1>
+            </div>
+            <div id="4" class="matrix">
+                <h1 id="b4">0</h1>
+            </div>
+            <div id="5" class="matrix">
+                <h1 id="b5">0</h1>
+            </div>
+            <div id="6" class="matrix">
+                <h1 id="b6">0</h1>
+            </div>
+            <div id="7" class="matrix">
+                <h1 id="b7">0</h1>
+            </div>
+            <div id="8" class="matrix">
+                <h1 id="b8">0</h1>
+            </div>
+            <div id="9" class="matrix">
+                <h1 id="b9">0</h1>
+            </div>
+            <div id="10" class="matrix">
+                <h1 id="b10">0</h1>
+            </div>
+            <div id="11" class="matrix">
+                <h1 id="b11">0</h1>
+            </div>
+            <div id="12" class="matrix">
+                <h1 id="b12">0</h1>
+            </div>
+            <div id="13" class="matrix">
+                <h1 id="b13">0</h1>
+            </div>
+            <div id="14" class="matrix">
+                <h1 id="b14">0</h1>
+            </div>
+            <div id="15" class="matrix">
+                <h1 id="b15">0</h1>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
