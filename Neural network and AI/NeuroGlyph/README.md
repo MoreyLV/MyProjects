@@ -1,5 +1,7 @@
 # NeuroGlyph
 
+---!!!Remember that you need to install the necessary libraries!!!---
+
 **NeuroGlyph** is a minimal neural network sandbox powered by FastAPI. It allows users to either train or test a simple neural network model directly from the terminal or via a web interface.
 
 -Features-
